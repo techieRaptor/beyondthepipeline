@@ -1,0 +1,23 @@
+---
+title: "Understanding Incremental Models in dbt"
+description: "A practical way to think about incremental models, filters, keys, and late-arriving data."
+category: "dbt"
+tags: ["dbt", "Analytics Engineering", "Snowflake"]
+date: "2026-08-20"
+---
+
+# Incremental models are about controlled change
+
+An incremental model should answer a simple question: which records actually need to be processed again?
+
+## Start with the grain
+
+Before writing an incremental filter, define the grain of the model and the key that uniquely identifies it.
+
+## Think about late-arriving data
+
+A timestamp filter alone can miss records that arrive late. Depending on the source, a small lookback window or merge strategy can make the model more reliable.
+
+## Keep the logic observable
+
+Incremental processing should be measurable. Track how many rows were inserted, updated, and skipped so that unusual changes are visible.

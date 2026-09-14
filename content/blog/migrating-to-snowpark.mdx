@@ -1,0 +1,23 @@
+---
+title: "Migrating 40+ Java Pipelines to Snowpark"
+description: "What changes when legacy pipeline logic moves into Snowflake with Snowpark Python."
+category: "Snowflake"
+tags: ["Snowflake", "Snowpark", "Python", "Migration"]
+date: "2026-09-01"
+---
+
+# The migration is not just a code rewrite
+
+Moving pipeline logic into Snowflake changes more than the implementation language. The important work is preserving business behavior while changing where computation happens.
+
+## The real challenge
+
+Parity matters more than syntax. A pipeline that runs successfully but produces a subtly different result is still a failed migration.
+
+## A useful mental model
+
+Separate business rules from implementation details. Validate row counts, aggregates, null behavior, date boundaries, joins, and edge cases before optimizing the new implementation.
+
+## What I would do differently
+
+Define a repeatable parity checklist before migrating the first production pipeline. It becomes the safety net for every pipeline that follows.
